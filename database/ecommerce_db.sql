@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2021 at 06:10 PM
+-- Generation Time: Apr 27, 2021 at 07:47 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -42,7 +42,8 @@ CREATE TABLE `admin` (
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(500) NOT NULL,
-  `category_details` varchar(500) NOT NULL
+  `category_details` varchar(500) NOT NULL,
+  `category_image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -53,10 +54,9 @@ CREATE TABLE `category` (
 
 CREATE TABLE `contact` (
   `contact_id` int(11) NOT NULL,
-  `fullname` varchar(500) NOT NULL,
-  `email` varchar(500) NOT NULL,
-  `phone` varchar(500) NOT NULL,
-  `message` varchar(500) NOT NULL
+  `customer_id` int(11) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `message` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -86,8 +86,22 @@ CREATE TABLE `item` (
   `item_name` varchar(500) NOT NULL,
   `item_price` double NOT NULL,
   `item_details` varchar(500) NOT NULL,
-  `item_image` varchar(500) NOT NULL
+  `item_image` varchar(500) NOT NULL,
+  `added_by_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itempurchase`
+--
+
+CREATE TABLE `itempurchase` (
+  `itempurchase_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `purchase_id` int(11) NOT NULL,
+  `number_of_items` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -113,18 +127,17 @@ CREATE TABLE `payment` (
 CREATE TABLE `purchase` (
   `purchase_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `number_of_items` int(11) NOT NULL,
-  `purchase_date` date NOT NULL
+  `purchase_date` date NOT NULL,
+  `purchase_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `purchase`
 --
 
-INSERT INTO `purchase` (`purchase_id`, `customer_id`, `item_id`, `number_of_items`, `purchase_date`) VALUES
-(1, 1, 3, 2, '2020-11-09'),
-(2, 1, 5, 8, '2020-11-09');
+INSERT INTO `purchase` (`purchase_id`, `customer_id`, `purchase_date`, `purchase_status`) VALUES
+(1, 1, '2020-11-09', 0),
+(2, 1, '2020-11-09', 0);
 
 --
 -- Indexes for dumped tables
@@ -159,6 +172,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`);
+
+--
+-- Indexes for table `itempurchase`
+--
+ALTER TABLE `itempurchase`
+  ADD PRIMARY KEY (`itempurchase_id`);
 
 --
 -- Indexes for table `payment`
@@ -205,6 +224,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `item`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `itempurchase`
+--
+ALTER TABLE `itempurchase`
+  MODIFY `itempurchase_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment`
