@@ -192,3 +192,43 @@ body
 	width: 20%;
 	height: 250px;
 }
+
+/* error */
+.error{
+	color: red !important;
+}
+
+.col-md-4 {
+	border: 1px #d8ae86 solid;
+}
+
+.menu-item {
+	font-size: 24px;
+}
+
+.admin-home img {
+	height: 200px;
+}
+
+.admin-home img:hover{
+	margin-left: -15px;
+	width: 110%;
+}
+.admin-home p:hover {
+	font-size: 28px;
+}
+
+.admin-category img {
+	height: 200px;
+}
+
+.customer-category img {
+	height: 200px;
+}
+.customer-category img:hover{
+	margin-left: -15px;
+	width: 110%;
+}
+.customer-category p:hover {
+	font-size: 28px;
+}
