@@ -14,28 +14,33 @@
        
        	<div class="content">
             <div class="content">
-            	<h1>Welcome to Customer Home</h1>
-            	<h2>Select an category of product</h2>
+            	<h1>Welcome to Online Shopping</h1>
+            	<h2>Select an product to buy</h2>
 
             	<p>
-                <div class="customer-category">
+                <div class="admin-category">
                     <div class="row">
                 <?php
-                    
+                      $category_id = $_GET['category_id'];
                       $conn = mysqli_connect("localhost", "root", "", "ecommerce_db");
-                      $sql = mysqli_query($conn, "SELECT * FROM `category`");
+                      $sql = mysqli_query($conn, "SELECT * FROM `item` where category_id =".$category_id);
 
                       while($data = mysqli_fetch_array($sql)){
+                        $item_id = $data['item_id'];
                         $category_id = $data['category_id'];
-                        $category_name = $data['category_name'];
-                        $category_details = $data['category_details'];
-                        $category_image = $data['category_image'];
+                        $item_name = $data['item_name'];
+                        $item_price = $data['item_price'];
+                        $item_details = $data['item_details'];
+                        $item_image = $data['item_image'];
+                        $added_by_admin = $data['added_by_admin'];
                 ?>
 
-                
                       <div class="col-md-4">
-                        <a href="customer-product.php?category_id= <?php echo $category_id; ?>"><img class="admin-home-img" src="images/category/<?php echo $category_image ?>">
-                        <p class="menu-item"><?php echo $category_name; ?> </p></a>
+                        <img src="images/items/<?php echo $item_image ?>">
+                        <p>Product Name: <b><?php echo $item_name; ?></b></p>
+                        <p>Price: <b><?php echo $item_price; ?></b></p>
+                        <p><?php echo $item_details; ?></p>
+                        <p><a href="#"><button type="button" class="btn btn-primary">Add to Cart</button></a></p>
                       </div>
                       
                     
@@ -50,7 +55,7 @@
         		  
         	</div>
 
-
+          <p><a href="customer-home.php"> <-- Back to Category</a></p>
         </div> <!--end of content div-->
        
        <?php include('footer.php');?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 05:59 PM
+-- Generation Time: May 05, 2021 at 10:02 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -58,8 +58,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `category_details`, `category_image`) VALUES
-(10, 'Mobile ', 'This is mobile phone category', 'mobile.png'),
-(11, 'Automobile', 'This is automobile category', 'automobile.png');
+(1, 'Automobile', 'This is automobile category', 'automobile.png'),
+(16, 'Mobile ', 'This is mobile phone category', 'mobile.png');
 
 -- --------------------------------------------------------
 
@@ -73,6 +73,14 @@ CREATE TABLE `contact` (
   `address` varchar(500) NOT NULL,
   `message` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contact_id`, `customer_id`, `address`, `message`) VALUES
+(50, 4, 'sydney', 'your service is good'),
+(51, 4, 'australia', 'your one of the staff is not good');
 
 -- --------------------------------------------------------
 
@@ -112,6 +120,16 @@ CREATE TABLE `item` (
   `item_image` varchar(500) NOT NULL,
   `added_by_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `category_id`, `item_name`, `item_price`, `item_details`, `item_image`, `added_by_admin`) VALUES
+(17, 16, 'Oppo', 1234, 'This is latest model of oppo phone', 'oppo.jpg', 2),
+(18, 1, 'Tesla', 99999999, 'This is latest model of Tesla', 'tesla.jpg', 2),
+(19, 1, 'BMW', 77777, 'This is latest model of BMW', 'bmw.jpeg', 2),
+(20, 16, 'Iphone X', 1212, 'This is the latest IPhone', 'iphone.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -228,25 +246,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `itempurchase`

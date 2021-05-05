@@ -4,8 +4,8 @@
                 <p>+61-470-252-496</p>
             </div>
         	<div class="footer-inside">
-                <p>@Copyright</p>
-                <p>Ravneet Kaur 2020</p>
+                <p>Copyright</p>
+                <p>@homecomfort 2021</p>
         	</div>
             <div class="footer-inside">
             	<p>Get Connected With Us</p>

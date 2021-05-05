@@ -1,6 +1,16 @@
 		<?php include('header.php');?>
-        <?php include('login-menu.php');?>
+        <?php include('admin-menu.php');?>
         <?php include('slider.php');?>
+
+        <?php
+            $_SESSION['loginErrorMessage'] ="";
+            if($_SESSION['admin_id'] > 0){
+                $_SESSION['loginErrorMessage'] ="";
+            }else{
+                $_SESSION['loginErrorMessage'] ="<div class='alert alert-danger'>You have not login, Please login to proceed...</div>";
+                header('Location: admin-login.php');
+            }
+        ?>
        
        	<div class="content">
             <div class="content">
@@ -10,7 +20,7 @@
 					function confirm(){
 						var category_name = document.getElementById('category_name').value;
 						var category_details = document.getElementById('category_details').value;
-            var category_image = document.getElementById('category_image').value;
+                        var category_image = document.getElementById('category_image').value;
 						
 						if(category_name !== null && category_name !== '' && category_details !== null && category_details !== '' && category_image !== null && category_image !== ''){
 							alert("Category added Successfully.");
@@ -60,9 +70,13 @@
                 
                       <div class="col-md-4">
                         <img class="admin-home-img" src="images/category/<?php echo $category_image ?>">
+                        <p>Category ID: <b><?php echo $category_id; ?></b></p>
                         <p>Category: <b><?php echo $category_name; ?></b></p>
                         <p><?php echo $category_details; ?></p>
-                        <p><a href="process/admin-delete-category.php?category_id= <?php echo $category_id ?>"><button type="button" class="btn btn-danger">Delete</button></a></p>
+                        <p>
+                            <a href="admin-edit-category.php?category_id= <?php echo $category_id ?>"><button type="button" class="btn btn-success">Edit</button></a>
+                            <a href="process/admin-delete-category.php?category_id= <?php echo $category_id ?>"><button type="button" class="btn btn-danger">Delete</button></a>
+                        </p>
                       </div>
                       
                     
@@ -76,7 +90,7 @@
         		  
         	</div>
 
-
+            <a href="admin-home.php"><-- Back to Admin Home</a>
         </div> <!--end of content div-->
        
        <?php include('footer.php');?>

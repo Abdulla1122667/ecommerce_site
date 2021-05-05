@@ -1,6 +1,6 @@
 		
         <?php include('header.php');?>
-        <?php include('login-menu.php');?>
+        <?php include('admin-menu.php');?>
         <?php include('slider.php');?>
 
         <?php
@@ -26,12 +26,16 @@
                         <p class="menu-item">Manage Category</p></a>
                       </div>
                       <div class="col-md-4">
-                        <a href="#"><img class="admin-home-img" src="images/products.jpg">
+                        <a href="admin-manage-product.php"><img class="admin-home-img" src="images/products.jpg">
                         <p class="menu-item">Manage Products</p></a>
                       </div>
                       <div class="col-md-4">
-                        <a href="#"><img src="images/users.png">
+                        <a href="admin-manage-customer.php"><img src="images/users.png">
                         <p class="menu-item">User Management</p></a>
+                      </div>
+                      <div class="col-md-4">
+                        <a href="admin-manage-message.php"><img src="images/message.png">
+                        <p class="menu-item">Customer Message</p></a>
                       </div>
                       <div class="col-md-4">
                         <a href="#"><img src="images/sales.jpg">
