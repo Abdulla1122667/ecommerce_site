@@ -15,8 +15,16 @@
        	<div class="content">
             <div class="content">
             	<h1>Welcome to Customer Home</h1>
-            	<h2>Select an category of product</h2>
 
+            	<h2>Search Individual Product</h2>
+              <div class="customer-category">
+                <div class="col-md-4">
+                  <a href="customer-search-product.php"><img class="admin-home-img" src="images/search.jpg">
+                  <p class="menu-item">Search Indiviudal Product </p></a>
+                </div>
+              </div>
+
+              <h2>Select an category of product</h2>
             	<p>
                 <div class="customer-category">
                     <div class="row">

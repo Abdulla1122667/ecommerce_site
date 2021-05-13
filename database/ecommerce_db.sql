@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2021 at 10:02 PM
+-- Generation Time: May 13, 2021 at 05:01 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -39,6 +39,27 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_password`) VALUES
 (2, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `item_id`, `customer_id`) VALUES
+(12, 20, 4),
+(13, 19, 4),
+(14, 20, 5);
 
 -- --------------------------------------------------------
 
@@ -129,7 +150,8 @@ INSERT INTO `item` (`item_id`, `category_id`, `item_name`, `item_price`, `item_d
 (17, 16, 'Oppo', 1234, 'This is latest model of oppo phone', 'oppo.jpg', 2),
 (18, 1, 'Tesla', 99999999, 'This is latest model of Tesla', 'tesla.jpg', 2),
 (19, 1, 'BMW', 77777, 'This is latest model of BMW', 'bmw.jpeg', 2),
-(20, 16, 'Iphone X', 1212, 'This is the latest IPhone', 'iphone.jpg', 2);
+(20, 16, 'Iphone X', 1212, 'This is the latest IPhone', 'iphone.jpg', 2),
+(21, 1, 'Tesla X', 111111, 'This is model X', 'teslax.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -168,17 +190,20 @@ CREATE TABLE `payment` (
 CREATE TABLE `purchase` (
   `purchase_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `number_of_items` int(11) NOT NULL,
   `purchase_date` date NOT NULL,
-  `purchase_status` tinyint(1) NOT NULL
+  `purchase_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `purchase`
 --
 
-INSERT INTO `purchase` (`purchase_id`, `customer_id`, `purchase_date`, `purchase_status`) VALUES
-(1, 1, '2020-11-09', 0),
-(2, 1, '2020-11-09', 0);
+INSERT INTO `purchase` (`purchase_id`, `customer_id`, `item_id`, `number_of_items`, `purchase_date`, `purchase_status`) VALUES
+(4, 4, 19, 1, '2021-05-08', 0),
+(5, 4, 20, 1, '2021-05-08', 0),
+(6, 4, 18, 1, '2021-05-09', 0);
 
 --
 -- Indexes for dumped tables
@@ -189,6 +214,12 @@ INSERT INTO `purchase` (`purchase_id`, `customer_id`, `purchase_date`, `purchase
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- Indexes for table `category`
@@ -243,6 +274,12 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -264,7 +301,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `itempurchase`
@@ -282,7 +319,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

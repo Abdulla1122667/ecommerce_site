@@ -23,17 +23,36 @@
        	<div class="content">
             <div class="content">
             	<h1>Welcome to Online Shopping</h1>
-            	<h2>Select an product to buy</h2>
+            	<h2>Search Individual Product</h2>
+              <p>
+                <form method="post">
+                  <table>
+                    <tr>
+                      <td>Enter Product Name:</td>
+                      <td><input class="form-control" type="text" name="item_name" id="item_name" /></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><input class="btn btn-primary" type="submit" name="submit" id="submit" value="Search" /></td>
+                    </tr>
+                  </table>
+                   
+                </form>
+              </p>
 
             	<p>
                 <div class="admin-category">
                     <div class="row">
+
                 <?php
-                      $category_id = $_GET['category_id'];
+                    if(isset($_POST['item_name'])){
+                      $item_name = $_POST['item_name'];
                       $conn = mysqli_connect("localhost", "root", "", "ecommerce_db");
-                      $sql = mysqli_query($conn, "SELECT * FROM `item` where category_id =".$category_id);
+                      $sql = mysqli_query($conn, "SELECT * FROM `item` where item_name LIKE ".'"%'.$item_name.'%"');
+                      $hasItem = false;
 
                       while($data = mysqli_fetch_array($sql)){
+                        $hasItem = true;
                         $item_id = $data['item_id'];
                         $category_id = $data['category_id'];
                         $item_name = $data['item_name'];
@@ -59,7 +78,14 @@
                       
                     
 
-                <?php } ?>
+                <?php 
+
+                      }
+                      if(!$hasItem){
+                        echo "<div class='alert alert-danger'>Sorry!!! No Product is Found.</div>";
+                      }
+                    } 
+                ?>
                   </div>
                 </div>
 
@@ -96,9 +122,10 @@ span.onclick = function() {
 }
 
 }
-</script>
+</script>            
         		  
         	</div>
+
           <p><a href="customer-home.php"> <-- Back to Category</a></p>
         </div> <!--end of content div-->
        
@@ -106,4 +133,3 @@ span.onclick = function() {
     </div> <!--end of wrapper div-->
 </body>
 </html>
-
