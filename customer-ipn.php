@@ -3,7 +3,7 @@ echo "abdulla";
  // Include configuration file 
  include_once 'config.php'; 
  // Include database connection file 
- include_once 'dbConnect.php'; 
+ include_once 'database.php'; 
  /* 
 * Read POST data 
 * reading posted data directly from $_POST causes serialization 
@@ -71,13 +71,19 @@ echo "abdulla";
      $currency_code     = $_POST['mc_currency']; 
      $payment_status = $_POST['payment_status']; 
 
+$conn = mysqli_connect("localhost", "root", "", "ecommerce_db");
+        mysqli_query($conn, "INSERT INTO payments(item_number,txn_id,payment_gross,currency_code,payment_status) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."')");
+        
      // Check if transaction data exists with the same TXN ID 
      $prevPayment = $db->query("SELECT payment_id FROM payments WHERE txn_id = '".$txn_id."'"); 
      if($prevPayment->num_rows > 0){ 
 exit(); 
 }else{ 
          // Insert transaction data into the database 
-         $insert = $db->query("INSERT INTO payments(item_number,txn_id,payment_gross,currency_code,payment_status) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."')"); 
+        // $insert = $db->query("INSERT INTO payments(item_number,txn_id,payment_gross,currency_code,payment_status) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."')"); 
+
+    $conn = mysqli_connect("localhost", "root", "", "ecommerce_db");
+        mysqli_query($conn, "INSERT INTO payments(item_number,txn_id,payment_gross,currency_code,payment_status) VALUES('".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."')");
 } 
 
 } 

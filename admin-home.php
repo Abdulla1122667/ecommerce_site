@@ -38,7 +38,7 @@
                         <p class="menu-item">Customer Message</p></a>
                       </div>
                       <div class="col-md-4">
-                        <a href="#"><img src="images/sales.jpg">
+                        <a href="admin-manage-sales.php"><img src="images/sales.jpg">
                         <p class="menu-item">View Sales</p></a>
                       </div>
                       <div class="col-md-4">

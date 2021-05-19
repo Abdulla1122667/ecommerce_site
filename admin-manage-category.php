@@ -67,7 +67,6 @@
                         $category_image = $data['category_image'];
                 ?>
 
-                
                       <div class="col-md-4">
                         <img class="admin-home-img" src="images/category/<?php echo $category_image ?>">
                         <p>Category ID: <b><?php echo $category_id; ?></b></p>
@@ -78,9 +77,6 @@
                             <a href="process/admin-delete-category.php?category_id= <?php echo $category_id ?>"><button type="button" class="btn btn-danger">Delete</button></a>
                         </p>
                       </div>
-                      
-                    
-
                 <?php } ?>
                   </div>
                 </div>

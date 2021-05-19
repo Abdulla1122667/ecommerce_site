@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2021 at 05:01 AM
+-- Generation Time: May 19, 2021 at 05:33 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -57,8 +57,6 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `item_id`, `customer_id`) VALUES
-(12, 20, 4),
-(13, 19, 4),
 (14, 20, 5);
 
 -- --------------------------------------------------------
@@ -124,7 +122,8 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_username`, `customer_password`, `customer_email`, `customer_phone`) VALUES
 (4, 'user', 'user', 'user', 'user@gmail.com', '99999999999'),
-(5, 'abdulla', 'abdulla', 'abdulla', 'abdulla@gmail.com', '8888888');
+(5, 'abdulla', 'abdulla', 'abdulla', 'abdulla@gmail.com', '8888888'),
+(9, 'hanumantha', 'hanu1', 'pass123', 'hanumantha@gmail.com', '12345678');
 
 -- --------------------------------------------------------
 
@@ -150,36 +149,8 @@ INSERT INTO `item` (`item_id`, `category_id`, `item_name`, `item_price`, `item_d
 (17, 16, 'Oppo', 1234, 'This is latest model of oppo phone', 'oppo.jpg', 2),
 (18, 1, 'Tesla', 99999999, 'This is latest model of Tesla', 'tesla.jpg', 2),
 (19, 1, 'BMW', 77777, 'This is latest model of BMW', 'bmw.jpeg', 2),
-(20, 16, 'Iphone X', 1212, 'This is the latest IPhone', 'iphone.jpg', 2),
-(21, 1, 'Tesla X', 111111, 'This is model X', 'teslax.jpg', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `itempurchase`
---
-
-CREATE TABLE `itempurchase` (
-  `itempurchase_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `purchase_id` int(11) NOT NULL,
-  `number_of_items` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
-
-CREATE TABLE `payment` (
-  `payment_id` int(11) NOT NULL,
-  `purchase_id` int(11) NOT NULL,
-  `name` varchar(500) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `details` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(21, 1, 'Tesla X', 111111, 'This is model X', 'teslax.jpg', 2),
+(22, 16, 'Iphone X', 999, 'This is latest version of IPhone', 'iphone.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -201,9 +172,10 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`purchase_id`, `customer_id`, `item_id`, `number_of_items`, `purchase_date`, `purchase_status`) VALUES
-(4, 4, 19, 1, '2021-05-08', 0),
-(5, 4, 20, 1, '2021-05-08', 0),
-(6, 4, 18, 1, '2021-05-09', 0);
+(12, 4, 21, 1, '2021-05-12', 1),
+(14, 4, 19, 1, '2021-05-13', 1),
+(15, 4, 19, 1, '2021-05-16', 1),
+(16, 4, 19, 1, '2021-05-16', 1);
 
 --
 -- Indexes for dumped tables
@@ -246,18 +218,6 @@ ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `itempurchase`
---
-ALTER TABLE `itempurchase`
-  ADD PRIMARY KEY (`itempurchase_id`);
-
---
--- Indexes for table `payment`
---
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`payment_id`);
-
---
 -- Indexes for table `purchase`
 --
 ALTER TABLE `purchase`
@@ -277,7 +237,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -295,31 +255,19 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `itempurchase`
---
-ALTER TABLE `itempurchase`
-  MODIFY `itempurchase_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `payment`
---
-ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

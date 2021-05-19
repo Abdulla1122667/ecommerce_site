@@ -52,7 +52,7 @@
                           <form method="post" action="process/add-to-cart.php">
                             <input type="hidden" name="customer_id" id="customer_id" value="<?php echo $_SESSION['customer_id']; ?>" />
                             <input type="hidden" name="item_id" id="item_id" value="<?php echo $item_id; ?>" />
-                            <input class="btn btn-primary" type="submit" name="submit" value="Add to Cart"  onclick="return confirm()" />
+                            <input class="btn btn-primary" type="submit" name="submit" value="Add to Cart" onclick="return confirm()" />
                           </form>
                         </p>
                       </div>

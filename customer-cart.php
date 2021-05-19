@@ -18,6 +18,27 @@ include_once 'config.php';
                 header('Location: login-system.php');
             }
         ?>
+        <script>
+
+          $(document).ready(function(){
+          $("#formId").submit(function(){
+            var item_name = document.getElementById("item_name").value;
+            alert("aler ho"+item_name);
+            $.post("process/checkout.php",
+            {
+              cart_id: 12,
+              city: "Duckburg"
+            },
+            function(data, status){
+              //alert("Data: " + data + "\nStatus: " + status);
+              console.log("Data: " + data + "\nStatus: " + status);
+            });
+          });
+        });
+          
+           
+
+        </script>
        
        	<div class="content">
             <div class="content">
@@ -51,27 +72,9 @@ include_once 'config.php';
                         <p><?php echo $item_details; ?></p>
                         <p><a href="process/delete-from-cart.php?cart_id= <?php echo $cart_id; ?>"><button type="button" class="btn btn-danger">Remove from Cart</button></a></p>
 
-                        <p>
-<form action="<?php echo PAYPAL_URL; ?>" method="post">
-  <!-- Identify your business so that you can collect the payments. -->
-  <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">                                                                                                
-  <!-- Specify a Buy Now button. -->
-  <input type="hidden" name="cmd" value="_xclick">                                                                                        
+                        <p><a href="process/checkout.php?cart_id=<?php echo $cart_id; ?>&item_id=<?php echo $item_id; ?>&customer_id=<?php echo $_SESSION['customer_id']; ?>"><button type="button" class="btn btn-primary">Checkout with Paypal</button></a></p>
 
-  <!-- Specify details about the item that buyers will purchase. -->
-  <input type="hidden" name="item_name" value="<?php echo $item_name; ?>">
-  <input type="hidden" name="item_number" value="<?php echo $item_id; ?>">
-  <input type="hidden" name="amount" value="<?php echo $item_price; ?>">
-  <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
-  <!-- Specify URLs -->
-  <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
-  <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">                                                                                                
-
-  <!-- Display the payment button. -->
-
-  <input class="btn btn-primary" type="submit" name="submit" value="Checkout with Paypal" />
-</form>
-                        </p>
+                        
                       </div>
                       
                     

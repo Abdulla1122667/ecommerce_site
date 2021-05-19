@@ -1,7 +1,4 @@
 <?php 
- /* 
-* PayPal and database configuration 
-*/ 
 // PayPal configuration 
  define('PAYPAL_ID', 'sydney.team2@gmail.com'); 
  define('PAYPAL_SANDBOX', TRUE); //TRUE or FALSE 
@@ -19,5 +16,4 @@
 
  // Change not required 
  define('PAYPAL_URL', (PAYPAL_SANDBOX == true)?"https://www.sandbox.paypal.com/cgi-bin/webscr":"https://www.paypal.com/cgi-bin/webscr");
-
 ?>
