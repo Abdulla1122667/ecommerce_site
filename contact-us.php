@@ -21,8 +21,6 @@
                         if(customer_id !== null && customer_id !== '' && address !== null && address !== '' && message !== null && message !== ''){
                             alert("Thank You for messaging us.");
                         }
-                        
-                        
                     }
                 </script>
        

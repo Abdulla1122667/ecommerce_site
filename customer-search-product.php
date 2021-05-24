@@ -65,7 +65,7 @@
                       <div class="col-md-4">
                         <img id="<?php echo $item_image; ?>" alt="<?php echo $item_name; ?>" src="images/items/<?php echo $item_image; ?>" onclick="return imgClick('<?php echo $item_image; ?>')" />
                         <p>Product Name: <b><?php echo $item_name; ?></b></p>
-                        <p>Price: <b><?php echo $item_price; ?></b></p>
+                        <p>Price (In $USD): <b><?php echo $item_price; ?></b></p>
                         <p><?php echo $item_details; ?></p>
                         <p>
                           <form method="post" action="process/add-to-cart.php">

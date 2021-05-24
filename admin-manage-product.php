@@ -104,7 +104,7 @@
                         <p>Product ID: <b><?php echo $item_id; ?></b></p>
                         <p>Product Name: <b><?php echo $item_name; ?></b></p>
                         <p>Category: <b><?php echo $category_id; ?></b></p>
-                        <p>Price: <b><?php echo $item_price; ?></b></p>
+                        <p>Price (In $USD): <b><?php echo $item_price; ?></b></p>
                         <p>Added by Admin ID: <b><?php echo $added_by_admin; ?></b></p>
                         <p><?php echo $item_details; ?></p>
                         <p>
